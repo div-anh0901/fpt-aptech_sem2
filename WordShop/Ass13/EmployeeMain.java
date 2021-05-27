@@ -37,7 +37,6 @@ public class EmployeeMain {
             retirementList(hm);
         
         } catch (IOException ex) {
-            //TODO: handle exception
             System.out.println(ex.getMessage());
         }
     }

@@ -6,7 +6,6 @@ public class SavingsAcount extends Account  {
 
     public SavingsAcount(String accountNumber,String accountHolderName, String accountType,double dailyInterest,double balance,int daysOfYear ){
         super(accountNumber,accountHolderName,accountType,balance);
-        
         this.dailyInterest = dailyInterest;
         this.daysOfYear = daysOfYear;
     }

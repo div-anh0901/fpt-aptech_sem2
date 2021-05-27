@@ -8,7 +8,7 @@ public class Account {
     private String accountType;
 
     private double balance;
-    private ArrayList accDetails = new ArrayList();
+    private ArrayList accDetails = new ArrayList<>();
 
     public void displayDetails() {
         System.out.println("Bank Details of Customer");

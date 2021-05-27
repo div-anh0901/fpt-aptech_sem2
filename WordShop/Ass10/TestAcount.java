@@ -1,7 +1,7 @@
 
 import java.util.Scanner;
 
-public class TestAccount{
+public class TestAccount1{
     public static void main(String[] args) {
         String[] accountDetails = new String[5];
 
