@@ -7,17 +7,17 @@ public class Student {
 
     int id ,age;
     String name,adress;
-    float gpa;
+    float diem;
     public  Student(){
         id = ++count;
     }
 
-    public  Student(int id,int age, String name,String address, float gpa){
+    public  Student(int id,int age, String name,String address, float diem){
         this.id = id;
         this.age = age;
         this.name = name ;
         this.adress = address;
-        this.gpa = gpa;
+        this.diem = diem;
     }
 
     public int getId(){
@@ -51,10 +51,10 @@ public class Student {
     }
 
     public  float getGpa(){
-        return  gpa;
+        return  diem;
     }
-    public  void setGpa(){
-        this.gpa = gpa;
+    public  void setGpa( float diem){
+        this.diem = diem;
     }
 
     public  void input(){
@@ -68,28 +68,26 @@ public class Student {
         adress = input.nextLine();
         System.out.println("Nhap tuoi : ");
         age = input.nextInt();
-        System.out.println("Nhap gpa :");
-        gpa = input.nextFloat();
     }
     public String getFileLine(){
-        return id + " , " + name + " , " + age + " , " + adress + " , " + gpa + "\n";
+        return id + " , " + name + " , " + age + " , " + adress + " , " + diem + "\n";
     }
-//    public  void parse(String line){
-//        String[] p = line.split(",");
-//    try{
-//        id =Integer.parseInt(p[0]);
-//        name = p[1];
-//        adress = p[2];
-//        age = Integer.parseInt(p[3]);
-//        gpa = Float.parseFloat(p[4]);
-//
-//    }catch (ArrayIndexOutOfBoundsException e){
-//    }finally {
-//
-//    }
-//
-//
-//    }
+    public  void parse(String line){
+        String[] p = line.split(",");
+    try{
+        id =Integer.parseInt(p[0]);
+        name = p[1];
+        adress = p[2];
+        age = Integer.parseInt(p[3]);
+        diem = Float.parseFloat(p[4]);
+
+    }catch (ArrayIndexOutOfBoundsException e){
+    }finally {
+
+    }
+
+
+    }
     public  void display(){
         System.out.println(this);
     }
@@ -97,6 +95,6 @@ public class Student {
     public  String toString(){
         return "Student { " + "id = " + id +", age = " + age +
                 ", name = " + name + ", adress = " + adress +
-                ", gpa = " + gpa +"}";
+                ", gpa = " + diem +"}";
     }
 }

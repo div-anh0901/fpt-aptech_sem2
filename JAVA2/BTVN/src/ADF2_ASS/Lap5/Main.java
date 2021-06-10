@@ -181,7 +181,8 @@ public class Main {
             try{
                 fis.close();
             }catch (IOException e){
-                e.printStackTrace();
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,e);
+
             }
 
         }
@@ -189,7 +190,8 @@ public class Main {
             try{
                 reader.close();
             }catch (IOException e){
-                e.printStackTrace();
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,e);
+
             }
 
         }
@@ -198,7 +200,8 @@ public class Main {
             try{
                 bufferedReader.close();
             }catch (IOException e){
-e.printStackTrace();
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,e);
+
             }
 
         }
