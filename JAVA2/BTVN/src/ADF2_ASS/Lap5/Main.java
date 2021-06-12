@@ -129,22 +129,20 @@ public class Main {
                 String line = student.getFileLine();
                 byte[] b = line.getBytes();
                 fos.write(b);
-
             }
         }catch (FileNotFoundException e){
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,e);
+           e.printStackTrace();
         }catch (UnsupportedEncodingException e){
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,e);
+            e.printStackTrace();
         }catch (IOException e){
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,e);
+          e.printStackTrace();
 
         }finally {
             if(fos != null){
                 try {
                     fos.close();
                 }catch ( IOException ex){
-                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,ex);
-
+                    ex.printStackTrace();
                 }
             }
         }
@@ -156,13 +154,9 @@ public class Main {
     BufferedReader bufferedReader = null;
     try {
         fis = new FileInputStream("student.txt");
-
         reader = new InputStreamReader(fis);
-
         bufferedReader = new BufferedReader(reader);
         String line = null;
-
-
         while ((line = bufferedReader.readLine()) !=null){
                 if(line.isEmpty()){
                     continue;
@@ -172,38 +166,31 @@ public class Main {
                 studentList.add(std);
         }
     }catch (FileNotFoundException e){
-        Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,e);
+       e.printStackTrace();
     }catch (IOException e){
-        Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,e);
-
+      e.printStackTrace();
     }finally {
         if(fis != null){
             try{
                 fis.close();
             }catch (IOException e){
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,e);
-
+              e.printStackTrace();
             }
-
         }
         if(reader != null){
             try{
                 reader.close();
             }catch (IOException e){
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,e);
-
+              e.printStackTrace();
             }
-
         }
 
         if(bufferedReader != null){
             try{
                 bufferedReader.close();
             }catch (IOException e){
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,e);
-
+               e.printStackTrace();
             }
-
         }
     }
 
