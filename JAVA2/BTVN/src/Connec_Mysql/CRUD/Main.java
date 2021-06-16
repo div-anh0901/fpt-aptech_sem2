@@ -11,8 +11,7 @@ public class Main {
         Information infor= new Information();
         Scanner input = new Scanner(System.in);
         try{
-            Connection conn = getConnnection(DB_URL,USER_NAME,PASSWORD);
-            ResultSet rs;
+
             boolean flag = true;
             while (flag){
                 System.out.println("CURD IN DATABASE");
@@ -22,7 +21,6 @@ public class Main {
                 System.out.println("4 . Show User");
                 System.out.println("5 . Search User");
                 System.out.println("6 . exit");
-
                 int choose;
                 choose = input.nextInt();
                 switch (choose){
@@ -32,7 +30,8 @@ public class Main {
                         String address;
                         String phone ;
                         try{
-
+                            Connection conn = getConnnection(DB_URL,USER_NAME,PASSWORD);
+                            ResultSet rs;
                             PreparedStatement pst = conn.prepareStatement("INSERT INTO account (`id`,`name`, `age`, `address`, `phone`) VALUES (?,?,?,?,?) ");
                             System.out.println("Insert user : ");
                             System.out.println("id");
@@ -55,6 +54,8 @@ public class Main {
                     }
                     case  2 :{
                         try {
+                            Connection conn = getConnnection(DB_URL,USER_NAME,PASSWORD);
+                            ResultSet rs;
                             System.out.println("UPDATE USER");
                             PreparedStatement pst = conn.prepareStatement("UPDATE account SET `name` = ?, `age` = ?, `address` = ?, `phone` = ? WHERE `id` = ? ");
 
@@ -69,6 +70,7 @@ public class Main {
                             System.out.println("Nhap id can update");
                             pst.setInt(5,infor.getId());
                             pst.executeUpdate();
+                            pst.close();
                             conn.close();
                         }catch (Exception e){
                             e.printStackTrace();
@@ -78,10 +80,13 @@ public class Main {
                     }
                     case 3 : {
                             try{
+                                Connection conn = getConnnection(DB_URL,USER_NAME,PASSWORD);
+                                ResultSet rs;
                                 PreparedStatement pst = conn.prepareStatement("DELETE FROM account WHERE  `id` = ?");
                                 System.out.println("Nhap id de xoa");
                                 pst.setInt(1,infor.getId());
                                 pst.executeUpdate();
+                                pst.close();
                                 conn.close();
                         }catch (Exception e){
                                 e.printStackTrace();
@@ -90,6 +95,8 @@ public class Main {
                     }
 
                     case 4 : {
+                        Connection conn = getConnnection(DB_URL,USER_NAME,PASSWORD);
+                        ResultSet rs;
                         System.out.println("SHOW ACCOUNT DATABASE");
                         PreparedStatement pst = conn.prepareStatement("SELECT * FROM account");
                         rs = pst.executeQuery();
@@ -107,6 +114,8 @@ public class Main {
                         break;
                     }
                     case 5: {
+                        Connection conn = getConnnection(DB_URL,USER_NAME,PASSWORD);
+                        ResultSet rs;
                         System.out.println("Search user by id");
                         PreparedStatement pst = conn.prepareStatement("SELECT  * FROM account WHERE  `id` = ? ");
                         System.out.println("Nhap id");
@@ -120,13 +129,17 @@ public class Main {
                                     ", phone = " + rs.getString(5)
                             );
                         }
-
+                        rs.close();
+                        pst.close();
                         conn.close();
+                        break;
                     }
                     case 6 : {
                         flag = false;
                     }
-
+                    default:{
+                        System.out.println("Invalid");
+                    }
                 }
             }
         }catch (Exception e){
