@@ -16,6 +16,7 @@ public class Connector {
 
         return DriverManager.getConnection(url,username,password);
     }
+
     public  static void close(PreparedStatement preparedStatement){
         if(preparedStatement != null){
             try{
